@@ -169,6 +169,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.1.8)
+    rack-cors (2.0.2)
+      rack (>= 2.0.0)
     rack-session (2.0.0)
       rack (>= 3.0.0)
     rack-test (2.2.0)
@@ -281,6 +283,7 @@ DEPENDENCIES
   jwt
   mysql2 (~> 0.5)
   puma (>= 5.0)
+  rack-cors
   rails (~> 7.2.2, >= 7.2.2.1)
   rolify
   rubocop-rails-omakase
