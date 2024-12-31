@@ -1,0 +1,7 @@
+<h1>New Appointment Scheduled</h1>
+<p>Hello <%= @lab.name %>,</p>
+<p>A new appointment has been scheduled with the following details:</p>
+<p>Patient Name: <%= @patient.first_name %>  <%= @patient.last_name %></p>
+<p>Agent Name : <%= @appointment.agent.name %></p>
+<p>Appointment Date: <%= @appointment.appointment_time %></p>
+<p>Location: <%= @appointment.collection_location %></p>

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
       devise_for :users
       resources :agents
       resources :labs
+      resources :patient_appointments
+      resources :patient_samples
     end
   end
 end
