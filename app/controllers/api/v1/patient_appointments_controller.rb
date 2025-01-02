@@ -5,10 +5,7 @@ module Api
 
       def index
         @appointments = @current_user.patientAppointments.includes(:agent)
-        render json: {
-          appointments: @appointments,
-          message: "Appointments fetched successfully"
-        }, status: :ok
+        render json: { appointments: @appointments, message: "Appointments fetched successfully" }, status: :ok
       end
 
       def create
@@ -17,39 +14,25 @@ module Api
         UserMailer.appointment_scheduled(appointment).deliver_now
 
         if appointment.save
-          render json: {
-            appointment:,
-            message: "Appointment scheduled successfully"
-          }, status: :created
+          render json: { appointment:, message: "Appointment scheduled successfully" }, status: :created
         else
-          render json: {
-            errors: appointment.errors.full_messages
-          }, status: :unprocessable_entity
+          render json: { errors: appointment.errors.full_messages }, status: :unprocessable_entity
         end
       end
 
       def update
         if @appointment.update(appointment_params)
-          render json: {
-            appointment: @appointment,
-            message: "Appointment updated successfully"
-          }, status: :ok
+          render json: { appointment: @appointment, message: "Appointment updated successfully" }, status: :ok
         else
-          render json: {
-            errors: @appointment.errors.full_messages
-          }, status: :unprocessable_entity
+          render json: { errors: @appointment.errors.full_messages }, status: :unprocessable_entity
         end
       end
 
       def destroy
         if @appointment.destroy
-          render json: {
-            message: "Appointment deleted successfully"
-          }, status: :ok
+          render json: { message: "Appointment deleted successfully" }, status: :ok
         else
-          render json: {
-            errors: @appointment.errors.full_messages
-          }, status: :unprocessable_entity
+          render json: { errors: @appointment.errors.full_messages }, status: :unprocessable_entity
         end
       end
 

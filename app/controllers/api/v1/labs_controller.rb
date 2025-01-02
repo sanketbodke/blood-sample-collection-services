@@ -6,14 +6,9 @@ module Api
         @lab = @current_user.build_lab(lab_params)
 
         if @lab.save
-          render json: {
-            lab: @lab,
-            message: "Lab Created Successfully"
-          }, status: :created
+          render json: { lab: @lab, message: "Lab Created Successfully" }, status: :created
         else
-          render json: {
-            message: @lab.errors.full_messages
-          }, status: :unprocessable_entity
+          render json: { message: @lab.errors.full_messages }, status: :unprocessable_entity
         end
       end
 
@@ -21,10 +16,9 @@ module Api
         @lab = @current_user.lab
 
         if @lab.update(lab_params)
-          render json: {
-            lab: @lab,
-            message: "Lab updated"
-          }
+          render json: { lab: @lab, message: "Lab updated" }
+        else
+          render json: { message: @lab.errors.full_messages }, status: :unprocessable_entity
         end
       end
 

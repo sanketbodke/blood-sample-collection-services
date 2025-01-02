@@ -5,20 +5,14 @@ module Api
 
       def index
         @agents = @current_user.lab.agents.includes(:address).recently_updated
-        render json: {
-          agents: @agents,
-          message: "Agents fetched successfully"
-        }, status: :ok
+        render json: { agents: @agents, message: "Agents fetched successfully" }, status: :ok
       end
 
       def create
         agent = @current_user.lab.agents.build(agent_params)
 
         if agent.save
-          render json: {
-            agent:,
-            message: "Agent created successfully"
-          }, status: :created
+          render json: { agent:, message: "Agent created successfully" }, status: :created
         else
           render json: {
             errors: agent.errors.full_messages
@@ -28,26 +22,17 @@ module Api
 
       def update
         if @agent.update(agent_params)
-          render json: {
-            agent: @agent,
-            message: "Agent updated successfully"
-          }, status: :ok
+          render json: { agent: @agent, message: "Agent updated successfully" }, status: :ok
         else
-          render json: {
-            errors: @agent.errors.full_messages
-          }, status: :unprocessable_entity
+          render json: { errors: @agent.errors.full_messages }, status: :unprocessable_entity
         end
       end
 
       def destroy
         if @agent.destroy
-          render json: {
-            message: "Agent deleted successfully"
-          }, status: :ok
+          render json: { message: "Agent deleted successfully" }, status: :ok
         else
-          render json: {
-            errors: @agent.errors.full_messages
-          }, status: :unprocessable_entity
+          render json: { errors: @agent.errors.full_messages }, status: :unprocessable_entity
         end
       end
 

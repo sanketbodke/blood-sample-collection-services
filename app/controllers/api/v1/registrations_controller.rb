@@ -8,15 +8,10 @@ module Api
           role = params[:user][:is_lab] == 1 ? :lab : :patient
           user.add_role(role)
 
-          render json: {
-            user:,
-            message: "User register successfully"
-          }, status: :created
+          render json: { user:, message: "User register successfully" }, status: :created
 
         else
-          render json: {
-            message: user.errors.full_messages
-          }, status: :unprocessable_entity
+          render json: { message: user.errors.full_messages }, status: :unprocessable_entity
         end
       end
 
