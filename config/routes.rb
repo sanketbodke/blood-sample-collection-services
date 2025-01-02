@@ -9,6 +9,13 @@ Rails.application.routes.draw do
       resources :labs
       resources :patient_appointments
       resources :patient_samples
+      resources :passwords
+      resources :users, only: [ :update ] do
+        member do
+          post "send_otp"
+          patch "reset_password"
+        end
+      end
     end
   end
 end
